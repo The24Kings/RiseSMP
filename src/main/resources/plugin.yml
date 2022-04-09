@@ -1,0 +1,4 @@
+name: RiseSMP
+version: '${version}'
+main: revive.smp.Rise
+api-version: 1.18
