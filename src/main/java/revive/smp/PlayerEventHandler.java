@@ -17,6 +17,8 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.bukkit.Bukkit.getServer;
+
 public class PlayerEventHandler implements Listener {
     List<Location> chests = new ArrayList<>();
 
@@ -38,6 +40,9 @@ public class PlayerEventHandler implements Listener {
                 Player player = meta.getOwningPlayer().getPlayer();
                 world.strikeLightning(location);
                 player.teleport(headLocation);
+                for (Player players : getServer().getOnlinePlayers()) {
+                    players.playSound(headLocation, Sound.ITEM_TRIDENT_THUNDER, 10, 0.3f);
+                }
                 player.setGameMode(GameMode.SURVIVAL);
 
                 //Remove Head
